@@ -3,12 +3,23 @@
         .{{ .class_name }},
         .{{ .class_name }}:active,
         .{{ .class_name }}.focus {
-            {{- if eq .element "border" -}}
-            border: 2px solid {{ .color_name }};
-            {{- end -}}
-            {{- if eq .element "background-color" -}}
-            background-color: {{ .color_name }};
-            {{- end -}}
+            {{- with .border_color }}
+                {{- if . }}
+                    border: 2px solid {{ . }};
+                {{- end }}
+            {{- end }}
+
+            {{- with .bg_color }}
+                {{- if . }}
+                    background-color: {{ . }};
+                {{- end }}
+            {{- end }}
+
+            {{- with .color }}
+                {{- if . }}
+                    color: {{ . }};
+                {{- end }}
+            {{- end }}
          }
          {{ end }}
     }

@@ -80,7 +80,7 @@ There are three main loops in this page, each nested inside the other: Years, We
             {{ $buttonClass := printf "btn birthday %s %s text-nowrap" ($.Store.Get "basedClass") ($.Store.Get "doingClass") }}
             {{ $.Store.Set "buttonClass" $buttonClass }}
             {{ $.Store.Set "buttonDataDate" $thisYear }}
-            {{ $.Store.Set "buttonDataBSTitle" (printf "%s – Turned %d year%s old" (dateFormat "Jan 2, 2006" $thisYear) $age (cond (ne $age 1) "s" "")) }}
+            {{ $.Store.Set "buttonDataBSTitle" (printf "%s – Turned %d year%s old" (dateFormat "2006年1月2日" $thisYear) $age (cond (ne $age 1) "s" "")) }}
             {{ $buttonLabel := (printf "🎂 %d in %d" $age $year) }}
             {{ $.Store.Set "buttonLabel" $buttonLabel }}
 
@@ -116,8 +116,8 @@ There are three main loops in this page, each nested inside the other: Years, We
                 {{ $buttonClass := printf "btn week %s %s w-100" ($.Store.Get "basedClass") ($.Store.Get "doingClass") }}
                 {{ $.Store.Set "buttonClass" $buttonClass }}
                 {{ $.Store.Set "buttonDataDate" $thisWeekDate }}
-                {{ $buttonDataBSTitle := (printf "%s – %s%s%s, based in %s"
-                    (dateFormat "Jan 2, 2006" $thisWeekDate)
+                {{ $buttonDataBSTitle := (printf "%s – %s%s%s, 在%s"
+                    (dateFormat "2006年01月02日" $thisWeekDate)
                     ($.Store.Get "doing")
                     (cond (ne ($.Store.Get "association") "") " at " "")
                     ($.Store.Get "association")
@@ -167,7 +167,7 @@ There are three main loops in this page, each nested inside the other: Years, We
                             {{ $.Store.Set "buttonClass" $buttonClass }}
                             {{ $.Store.Set "buttonDataDate" $specDate }}
                             {{ with .description }}
-                                {{ $.Store.Set "buttonDataBSTitle" (printf "%s – %s" (dateFormat "Jan 2, 2006" $specDate ) . ) }}
+                                {{ $.Store.Set "buttonDataBSTitle" (printf "%s – %s" (dateFormat "2006年1月2日" $specDate ) . ) }}
                             {{ end }}
                             {{ $buttonLabel := .headline }}
                             {{ $.Store.Set "buttonLabel" $buttonLabel }}
