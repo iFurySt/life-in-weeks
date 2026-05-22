@@ -1,0 +1,52 @@
+{{- $date := .Date -}}
+{{- $dateTime := time.AsTime $date -}}
+{{- $data := .Data -}}
+{{- $scratch := newScratch -}}
+{{- $scratch.Set "base" dict -}}
+{{- $scratch.Set "activeEvent" dict -}}
+{{- $scratch.Set "activeEventStart" "" -}}
+{{- $scratch.Set "markers" slice -}}
+
+{{- range $data.base -}}
+    {{- $start := time.AsTime .start -}}
+    {{- $isAfterStart := or (eq $date .start) (ge $dateTime $start) -}}
+    {{- $isBeforeEnd := true -}}
+    {{- with .end -}}
+        {{- $isBeforeEnd = lt $dateTime (time.AsTime .) -}}
+    {{- end -}}
+    {{- if and $isAfterStart $isBeforeEnd -}}
+        {{- $scratch.Set "base" . -}}
+    {{- end -}}
+{{- end -}}
+
+{{- range $data.events -}}
+    {{- if .start -}}
+        {{- $start := time.AsTime .start -}}
+        {{- $isBeforeEnd := true -}}
+        {{- with .end -}}
+            {{- $isBeforeEnd = lt $dateTime (time.AsTime .) -}}
+        {{- end -}}
+        {{- if and (ge $dateTime $start) $isBeforeEnd -}}
+            {{- if or (eq ($scratch.Get "activeEventStart") "") (gt .start ($scratch.Get "activeEventStart")) -}}
+                {{- $scratch.Set "activeEvent" . -}}
+                {{- $scratch.Set "activeEventStart" .start -}}
+            {{- end -}}
+        {{- end -}}
+    {{- end -}}
+
+    {{- if and .date (eq .date $date) -}}
+        {{- $scratch.Add "markers" (slice (dict "event" . "phase" "point")) -}}
+    {{- end -}}
+    {{- if and .start (eq .start $date) -}}
+        {{- $scratch.Add "markers" (slice (dict "event" . "phase" "start")) -}}
+    {{- end -}}
+    {{- if and .end (eq .end $date) (or .end_headline .end_description .end_class_name) -}}
+        {{- $scratch.Add "markers" (slice (dict "event" . "phase" "end")) -}}
+    {{- end -}}
+{{- end -}}
+
+{{- return (dict
+    "base" ($scratch.Get "base")
+    "activeEvent" ($scratch.Get "activeEvent")
+    "markers" ($scratch.Get "markers")
+) -}}

@@ -10,6 +10,8 @@
   border_color: "#8eb2d6"
 - class_name: "厦门"
   border_color: "#97989C"
+- class_name: "上海"
+  border_color: "#1F3A5F"
 
 - class_name: "小屁孩"
   bg_color: "white"

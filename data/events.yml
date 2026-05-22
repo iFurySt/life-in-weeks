@@ -1,110 +1,146 @@
 #
-# The first event should be birth.
-# The date should match start_date in content/index.md.
+# Timeline data is layered:
+# - base: where I lived. The next base item ends the previous one.
+# - events: single-day markers (`date`) or periods (`start` + `end`).
+# Color priority: point event > current period event > base.
 #
-"1994-12-06":
-  - headline: "🐣 我出生了"
+
+base:
+  # Home base
+  - start: "1994-12-06"
+    class_name: "泉州"
+  - start: "2009-10-01"
+    class_name: "厦门"
+  - start: "2011-09-01"
+    class_name: "泉州"
+  - start: "2014-09-01"
+    class_name: "厦门"
+  - start: "2025-09-01"
+    class_name: "上海"
+
+events:
+  # Life stages
+  - start: "1994-12-06"
+    end: "1999-09-01"
+    class_name: "小屁孩"
+    headline: "🐣 我出生了"
     description: "诞生在福建泉州的一个小乡村里，头顶\"环\"出生的，算是个意外，当时的大背景是计划生育🤬"
-    based: "泉州"
-    doing: "小屁孩"
-"2021-05-11":
-  - headline: "🧾 独立户口本"
-    description: "从此是一家之主了😎"
-    based: "厦门"
-"2077-01-01":
-  - headline: "☠️ 赛博朋克2077"
-    description: "或许可以活到这天吧？"
 
-# Internet
-"2009-10-01":
-  - headline: "🖥️ 互联网初识"
-    description: "具体时间不记得，09年是我第一次在一个小地方通过互联网结识到天南海北的朋友，跨越地域跨越年龄，是我的互联网启蒙时段。当时论坛盛行，人们还会在QQ和YY里交流"
-    based: "厦门"
-
-# Education
-"1999-09-01":
-  - headline: "🧒🏻 幼儿园时光"
+  # Education
+  - start: "1999-09-01"
+    end: "2002-09-01"
+    class_name: "幼儿园"
+    headline: "🧒🏻 幼儿园时光"
     description: "小小班、小班、中班、大班，上不完的幼稚园"
-    based: "泉州"
-    doing: "幼儿园"
-"2002-09-01":
-  - headline: "🙇🏻‍♂️ 小学时光"
+  - start: "2002-09-01"
+    end: "2007-09-01"
+    class_name: "小学"
+    headline: "🙇🏻‍♂️ 小学时光"
     description: "物质条件比较艰苦的学生时代也能从很多事情中取得精神层次的满足，那会的人会更加倾向线下的接触，Game Boy Advance简直让我和表弟迷的不行"
-    based: "泉州"
-    doing: "小学"
-"2007-09-01":
-  - headline: "📖 初中时光"
+  - start: "2007-09-01"
+    end: "2014-09-01"
+    class_name: "中学"
+    headline: "📖 初中时光"
     description: "古惑仔盛行的初中时光，开始接触网吧，迷上游戏，开始对CS心向往之"
-    based: "泉州"
-    doing: "中学"
-"2010-09-01":
-  - headline: "🔖 中专时光"
+  - date: "2010-09-01"
+    class_name: "中学"
+    headline: "🔖 中专时光"
     description: "因为追求CS，毅然放弃高中录取通知书奔赴中专，最终还是失望了，一年后还是离开了"
-    based: "厦门"
-    doing: "中学"
-"2011-09-01":
-  - headline: "📚 高中时光"
+  - date: "2011-09-01"
+    class_name: "中学"
+    headline: "📚 高中时光"
     description: "从中专辗转回来，带了一点和同龄人不太一样的想法回来了，这段时期的同学情谊情深在未来的岁月里得到了验证。胡闹了3年，酷爱做一些前卫的事情，心底还是厌恶应试教育的一切，渴望逃脱"
-    based: "泉州"
-    doing: "中学"
-"2014-09-01":
-  - headline: "🎓 大学时光"
+  - start: "2014-09-01"
+    end: "2018-07-01"
+    class_name: "大学"
+    headline: "🎓 大学时光"
     description: "上大学了，人生很重要的一段经历，从很多方面改变了我"
-    based: "厦门"
-    doing: "大学"
 
-# Travel
-"2018-12-22":
-  - headline: "🇦🇺 澳洲"
-    description: "第一次出国，拍脑袋说走就走，线上DIY申请签证，DIY行程，说走就走。第一次踏上异国的土地、第一次国外租车、第一次开左舵、第一次浮潜、第一次跳水、第一次坐直升飞机、第一次看袋鼠..."
-"2024-09-20":
-  - headline: "🚅 苏州"
+  # Internet
+  - date: "2009-10-01"
+    headline: "🖥️ 互联网初识"
+    description: "具体时间不记得，09年是我第一次在一个小地方通过互联网结识到天南海北的朋友，跨越地域跨越年龄，是我的互联网启蒙时段。当时论坛盛行，人们还会在QQ和YY里交流"
+
+  # Business
+  - start: "2018-07-01"
+    end: "2024-09-26"
+    class_name: "创业"
+    headline: "🚀 创业"
+    description: "最后一个多学年已经不在学校了，创业离我们并不遥远。只是名义上还是这一天毕业。从此未来一切便由自己"
+  - start: "2024-09-26"
+    class_name: "工作"
+    headline: "💼 新公司"
+    description: "离开待了多年的老东家，来到了一个新的公司"
+  - date: "2025-09-01"
+    class_name: "工作"
+    headline: "🐃 ByteDance"
+    description: "加入宇宙厂，有感而发屙了一篇[走出浪浪山，小妖怪也能卷进大厂了](https://www.ifuryst.com/blog/2025/a-nobody-s-way-into-big-tech/)"
+
+  # Travel
+  - date: "2018-12-22"
+    class_name: "旅行"
+    location: "澳洲"
+    headline: "🇦🇺 澳洲"
+    description: "第一次出国，拍脑袋说走就走，线上DIY申请签证，DIY行程，说走就走。第一次踏上异国的土地、第一次国外租车、第一次开右舵、第一次浮潜、第一次跳水、第一次坐直升飞机、第一次看袋鼠..."
+  - start: "2024-09-20"
+    end: "2024-09-26"
+    class_name: "旅行"
+    location: "苏州、南京"
+    headline: "🚅 苏州"
     description: "最有印象的不是园林，而是诚品书店📚"
-    doing: "旅行"
-"2024-09-23":
-  - headline: "🚅 南京"
+  - date: "2024-09-23"
+    class_name: "旅行"
+    location: "南京"
+    headline: "🚅 南京"
     description: "景区基本人很多，玄武湖比较peace，小商品蛮好逛，南京紫峰洲际体验拉满了"
-    doing: "旅行"
-"2025-01-25":
-  - headline: "🇺🇸 美国"
+  - start: "2025-01-25"
+    end: "2025-02-08"
+    class_name: "旅行"
+    location: "美国"
+    headline: "🇺🇸 美国"
     description: "第一次去美国，Big deal."
-    doing: "旅行"
-"2025-02-08":
-  - headline: "🇺🇸 美国"
-    description: "旅行结束"
-    doing: "工作"
+    end_headline: "🇺🇸 美国"
+    end_description: "旅行结束"
+    end_class_name: "工作"
+  - start: "2026-02-16"
+    end: "2026-02-26"
+    class_name: "旅行"
+    location: "瑞士、奥地利、列支敦士登、德国"
+    headline: "🇨🇭🇦🇹🇱🇮🇩🇪"
+    description: "喜欢在路上的感觉，喜欢看雪，喜欢人少，喜欢静谧，喜欢两人一起疯"
+    end_headline: "🇨🇭🇦🇹🇱🇮🇩🇪"
+    end_description: "旅行结束"
+    end_class_name: "工作"
 
-# Drive
-"2015-08-19":
-  - headline: "🏍️ 摩托车驾照"
+  # Drive
+  - date: "2015-08-19"
+    headline: "🏍️ 摩托车驾照"
     description: "无证驾驶了一段时间还是去考了一本"
-"2018-01-10":
-  - headline: "🚘 买车"
+  - date: "2018-01-10"
+    headline: "🚘 买车"
     description: "提完车就和兄弟2人开了1200公里，年轻人洒脱随性到极致，是很快乐的一段时光"
 
-# Love
-"2021-12-22":
-  - headline: "💍 领小本本"
+  # Love
+  - date: "2021-12-22"
+    headline: "💍 领小本本"
     description: "洗不完的碗"
-    based: "厦门"
 
-"2003-01-01":
-  - headline: "⛓️‍💥 骨折"
+  # Family
+  - date: "2021-05-11"
+    headline: "🧾 独立户口本"
+    description: "从此是一家之主了😎"
+
+  # Health
+  - date: "2003-01-01"
+    headline: "⛓️‍💥 骨折"
     description: "别拿扫把🧹当长枪然后骑自行车🚲，别问我为啥知道，骨折后，快好了爬椅子又二次骨折，非常精彩"
-    based: "泉州"
 
-# Business
-"2018-07-01":
-  - headline: "🚀 创业"
-    description: "最后一个多学年已经不在学校了，创业离我们并不遥远。只是名义上还是这一天毕业。从此未来一切便由自己"
-    based: "厦门"
-    doing: "创业"
-"2024-09-26":
-  - headline: "💼 新公司"
-    description: "离开待了多年的老东家，来到了一个新的公司"
-    doing: "工作"
-    based: "厦门"
-
-"2025-02-20":
-  - headline: "📍 Made this"
+  # Projects
+  - date: "2025-02-20"
+    headline: "📍 Made this"
     description: "回顾一下过往人生，也借此思考一下未来"
+
+  # Future
+  - date: "2077-01-01"
+    headline: "☠️ 赛博朋克2077"
+    description: "或许可以活到这天吧？"

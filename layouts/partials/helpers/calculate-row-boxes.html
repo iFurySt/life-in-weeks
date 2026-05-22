@@ -8,7 +8,10 @@ To do this rough calculation:
 2. Multiply the remaining characters in the box label by the smaller character multiplier
 3. Add the result together, plus the current total boxes in the row
 */ -}}
-{{- $lenLabelLessTwo := sub (len ($.Store.Get "buttonLabel")) 2 -}}
+{{- $label := $.Store.Get "buttonLabel" -}}
+{{- $labelForWidth := replaceRE "[🇦-🇿]" "" $label -}}
+{{- $flagWidth := mul (len (findRE "[🇦-🇿]{2}" $label)) 2 -}}
+{{- $lenLabelLessTwo := sub (add (len $labelForWidth) $flagWidth) 2 -}}
 {{- add ( $.Store.Get "totalBoxesInRow" )
     ( add
         ( mul 2 ($.Store.Get "boxEndMultiplier") )
